@@ -16,6 +16,21 @@ class MainHandler(RequestHandler):
         ques_count = db.ques.count()
         self.render('index.html', ques_count = ques_count)
 
+    def post(self):
+        ques = self.get_argument("ques")
+        ans = self.get_argument("ans")
+
+        if db.ques.find_one({'ques':ques}) != None :
+             self.write('such a question exist')
+
+        else :
+            db.ques.update({'ques': ques},
+                            {"$set": {'question':ques,
+                                      'answer': ans}}, upsert=True)
+
+
+
+
 settings = dict(
     db=db,
     debug=True
@@ -23,7 +38,7 @@ settings = dict(
 
 app = Application(
     handlers=[
-        (r'/leaderboard',MainHandler)
+        (r'/',MainHandler)
     ],
     template_path=os.path.join(os.path.dirname(__file__), "template"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
