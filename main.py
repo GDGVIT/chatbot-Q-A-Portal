@@ -25,10 +25,9 @@ class MainHandler(RequestHandler):
 
         else :
             db.ques.update({'ques': ques},
-                            {"$set": {'question':ques,
+                            {"$set": {'question': ques,
                                       'answer': ans}}, upsert=True)
-
-
+            self.write("your answer was submitted successfully")
 
 
 settings = dict(
