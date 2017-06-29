@@ -4,6 +4,7 @@
 	<title>Chatbot Q/A</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <link rel="shortcut icon" href="{{static_url('gdg1.jpg')}}"
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="{{static_url('style.css')}}" rel="stylesheet" type="text/css">
@@ -11,11 +12,15 @@
 <script src="script.js"></script>
 </head>
 <body>
+<div id="header">
+</div>
 <div id="portal" class="portal">
+<h2>Submit a question related to vit here...<h1>
 <form method="post" name="QA" action='/'>
-	<div id="quesD" name="quesD" class="quesD"><textarea type="text" name="ques" row='1' autofocus='True' placeholder="enter your question" style="overflow-x: hidden; word-wrap: break-word; height: 29px; width: 500px"></textarea></div>
-	<div id="ansD" name="ansD" class="ansD"><textarea type="text"  class="form-control" name="ans" row='1' autofocus='True' placeholder="enter your answer" style="overflow-x: hidden; word-wrap: break-word; height: 200px; width: 500px;"></textarea></div>
-	<div id="sub" name="sub" class="sub"><input type="submit"/></div>
+	<div id="quesD" name="quesD" class="quesD"><textarea type="text" name="ques" row='1' autofocus='True' placeholder="enter your question" style="font-size:20px;overflow-x: hidden; word-wrap: break-word ;height: 30px; width: 700px"></textarea></div>
+	<div id="ansD" name="ansD" class="ansD"><textarea type="text"  class="form-control" name="ans" row='1' autofocus='True' placeholder="enter your answer" style="overflow-x: hidden; word-wrap: break-word; height: 200px; width: 700px;"></textarea></div>
+	<br>
+	<div id="sub" name="sub" class="sub"><input type="submit" style="border-radius: 5px" /></div>
 	</form>
 </div>
 </body>

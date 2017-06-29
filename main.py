@@ -22,7 +22,8 @@ class MainHandler(RequestHandler):
 
         if db.ques.find_one({'ques':ques}) != None :
              self.write('such a question exist')
-
+        elif len(ques) or len(ans) < 10:
+            self.write('your answer or question is too short..please try again')
         else :
             db.ques.update({'ques': ques},
                             {"$set": {'question': ques,
