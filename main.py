@@ -17,7 +17,7 @@ class MainHandler(RequestHandler):
         self.render('index.html', ques_count = ques_count)
 
     def post(self):
-        ques = self.get_argument("ques")
+        ques = self.get_argument("ques").rstrip('?').strip()
         ans = self.get_argument("ans")
 
         if db.ques.find_one({'ques':ques}) != None :
