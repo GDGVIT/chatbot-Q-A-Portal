@@ -29,7 +29,6 @@ class LoginHandler(RequestHandler):
         username = self.get_argument('username')
         self.set_cookie('user',str(username))
         self.redirect('/node')
-        print 'logged_in'
 
 
 class MainHandler(RequestHandler):
@@ -51,7 +50,7 @@ class MainHandler(RequestHandler):
         ques = self.get_argument("ques").rstrip('?').strip().lower()
         ans = self.get_argument("ans").lower()
 
-        check_inside = yield db.ques.find_one({'ques': ques})
+        check_inside = db.ques.find_one({'ques': ques})
         if check_inside is not None:
             self.write('such a question exist')
         elif len(ques) < 10 or len(ans) < 10:
@@ -61,7 +60,7 @@ class MainHandler(RequestHandler):
                                  {"$set": {'question': ques, 'answer': ans,
                                   'type': ques_type,'submitted by': user}}, upsert=True)
 
-            self.redirect('/?response=True')
+            self.redirect('/node?response=True')
 
 
 class LogoutHandler(RequestHandler):
