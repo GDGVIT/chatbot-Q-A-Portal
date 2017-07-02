@@ -7,11 +7,9 @@ function d(smthg) {
 
 $(document).ready(function() {
 	d('ready');
-	$("#quesD").hide();
-    $("#ansD").hide();
-    $("#fpname").hide();
-    $("#rating").hide();
-    
+	$(".type-1").hide();
+    $(".type-2").hide();
+
 
 	$('#ques_type').change(function() {
     var selection = $(this).val();
@@ -22,27 +20,21 @@ $(document).ready(function() {
         case "Food":
         case "Places":
         case "Chapters":
-        	$("#quesD").hide();
-            $("#ansD").hide();
-            $("#fpname").show();
-            $("#rating").show();            
+        	$(".type-1").hide();
+            $(".type-2").show();            
             break;
 
         case "Faculty":
         case "Admissions":
         case "FFCS":
         case "General":
-        	$("#quesD").show();
-            $("#ansD").show();
-            $("#fpname").hide();
-            $("#rating").hide();
+        	$(".type-1").show();
+            $(".type-2").hide();
             break;
 
         default:
-            $("#quesD").hide();
-            $("#ansD").hide();
-            $("#fpname").hide();
-            $("#rating").hide();
+        	$(".type-1").hide();
+    		$(".type-2").hide();
             break;
     }
 	});

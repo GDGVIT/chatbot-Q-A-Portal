@@ -18,7 +18,7 @@ body{
 
 #portal{
 	margin:  100px auto 500px auto;
-	padding: 10px 10px 10px 10px;
+	padding: 10px;
 	width: 800px;
 	box-sizing: relative;
     background-color: rgba(128,128,128,0.5);
