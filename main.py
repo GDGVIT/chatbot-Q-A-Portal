@@ -27,8 +27,8 @@ class MainHandler(RequestHandler):
     @coroutine
     def post(self):
         ques_type = self.get_argument('ques_type').lower()
-        ques = self.get_argument("ques").rstrip('?').strip()
-        ans = self.get_argument("ans")
+        ques = self.get_argument("ques").rstrip('?').strip().lower()
+        ans = self.get_argument("ans").lower()
 
         check_inside = yield db.ques.find_one({'ques': ques})
         if check_inside is not None:
