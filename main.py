@@ -50,7 +50,7 @@ class MainHandler(RequestHandler):
         ques = self.get_argument("ques").rstrip('?').strip().lower()
         ans = self.get_argument("ans").lower()
 
-        check_inside = db.ques.find_one({'ques': ques})
+        check_inside = yield db.ques.find_one({'question': ques})
         if check_inside is not None:
             self.write('such a question exist')
         elif len(ques) < 10 or len(ans) < 10:
