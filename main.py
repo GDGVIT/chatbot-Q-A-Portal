@@ -11,21 +11,42 @@ import env
 
 db = MotorClient(env.DB_Link)['chatbot-learn']
 ques = db['ques']
+contributor = db['contributor']
+
+
+class IndexHandler(RequestHandler):
+    def get(self):
+        if self.get_cookie('user') == None:
+            self.render('login.html')
+        else :
+            self.redirect('/node')
+
+
+
+class LoginHandler(RequestHandler):
+    @coroutine
+    def post(self):
+        username = self.get_argument('username')
+        self.set_cookie('selfuser',str(username))
+        self.redirect('/node')
+        print 'logged_in'
 
 
 class MainHandler(RequestHandler):
     @coroutine
     def get(self):
+        user = self.get_cookie('user')
         ques_count = db.ques.count()
         try:
             old_response = self.get_query_argument('response')
             response = "your answer was submitted successfully, try another"
         except:
             response = ''
-        self.render('index.html', ques_count=ques_count, response=response)
+        self.render('index.html', ques_count=ques_count, response=response, user=user)
 
     @coroutine
     def post(self):
+        user = self.get_cookie('user')
         ques_type = self.get_argument('ques_type').lower()
         ques = self.get_argument("ques").rstrip('?').strip().lower()
         ans = self.get_argument("ans").lower()
@@ -38,8 +59,13 @@ class MainHandler(RequestHandler):
         else:
             yield db.ques.update({'question': ques},
                                  {"$set": {'question': ques, 'answer': ans,
-                                  'type': ques_type}}, upsert=True)
+                                  'type': ques_type,'submitted by': user}}, upsert=True)
+
             self.redirect('/?response=True')
+
+
+class LogoutHandler(RequestHandler):
+    xyz="ah"
 
 
 settings = dict(
@@ -49,7 +75,10 @@ settings = dict(
 
 app = Application(
     handlers=[
-        (r'/', MainHandler)
+        (r'/',IndexHandler),
+        (r'/node', MainHandler),
+        (r'/login',LoginHandler),
+        (r'/logout',LogoutHandler)
     ],
     template_path=os.path.join(os.path.dirname(__file__), "template"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
