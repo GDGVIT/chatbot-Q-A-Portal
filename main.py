@@ -27,7 +27,7 @@ class LoginHandler(RequestHandler):
     @coroutine
     def post(self):
         username = self.get_argument('username')
-        self.set_cookie('selfuser',str(username))
+        self.set_cookie('user',str(username))
         self.redirect('/node')
         print 'logged_in'
 
@@ -65,7 +65,11 @@ class MainHandler(RequestHandler):
 
 
 class LogoutHandler(RequestHandler):
-    xyz="ah"
+    @coroutine
+    def get(self):
+        if bool(self.get_cookie('user')):
+            self.clear_cookie('user')
+            self.redirect('/')
 
 
 settings = dict(

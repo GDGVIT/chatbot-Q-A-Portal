@@ -11,13 +11,14 @@
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-<p>Hello {{user}}</p>
+Hello {{user}}<span><form action="/logout"><input type="submit" value="logout" name="logout"></form></span>
 <div id="header">
-</div>
+<p>
 {{response}}
+</p>
 <div id="portal" class="portal">
 <h2>Submit a question related to vit here...<h1>
-<form method="post" name="QA" action='/'>
+<form method="post" name="QA" action='/node'>
 	<div class="dropdown">
 			
 			<select class="form-control" id="ques_type"  name="ques_type" placeholder="Question type">
