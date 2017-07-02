@@ -14,9 +14,23 @@
 <body>
 <div id="header">
 </div>
+{{response}}
 <div id="portal" class="portal">
 <h2>Submit a question related to vit here...<h1>
 <form method="post" name="QA" action='/'>
+	<div class="dropdown">
+			
+			<select class="form-control" id="ques_type"  name="ques_type" placeholder="Question type">
+			<option class="disabled">Select question type</option>
+			<option>Faculty</option>
+			<option>Admissions</option>
+			<option>Food</option>
+			<option>Chapters</option>
+			<option>Places</option>
+			<option>General</option>
+			</select>
+	</div>
+    	
 	<div id="quesD" name="quesD" class="quesD"><textarea type="text" name="ques" row='1' autofocus='True' placeholder="enter your question" style="font-size:20px;overflow-x: hidden; word-wrap: break-word ;height: 30px; width: 700px"></textarea></div>
 	<div id="ansD" name="ansD" class="ansD"><textarea type="text"  class="form-control" name="ans" row='1' autofocus='True' placeholder="enter your answer" style="overflow-x: hidden; word-wrap: break-word; height: 200px; width: 700px;"></textarea></div>
 	<br>
