@@ -10,11 +10,8 @@ $(document).ready(function() {
 	$(".type-1").hide();
     $(".type-2").hide();
 
-
 	$('#ques_type').change(function() {
     var selection = $(this).val();
-
-    d('hi');
 
     switch (selection) {
         case "Food":
