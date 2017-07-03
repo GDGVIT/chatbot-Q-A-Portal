@@ -1,5 +1,88 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
+	<head>
+		<title>Chatbot Q/A</title>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+			<link rel="shortcut icon" href="{{static_url('gdg1.jpg')}}">
+
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+			<link href="{{static_url('style.css')}}" rel="stylesheet" type="text/css">
+
+			<script src="static/script.js"></script>
+		</head>
+
+		<body>
+			<div id="header">
+			</div>
+			{{response}}
+			<div id="portal" class="portal">
+				<h2>Submit a question related to vit here...<h1>
+				
+				<form method="post" name="QA" action='/'>
+					
+					<div class="dropdown" style="margin-bottom: 10px;">						
+						<select class="form-control" id="ques_type"  name="ques_type" placeholder="Question type">
+							<option class="disabled">Select question type</option>
+							<option>Faculty</option>
+							<option>Admissions</option>
+							<option>Food</option>
+							<option>Chapters</option>
+							<option>FFCS</option>
+							<option>Places</option>
+							<option>General</option>
+						</select>
+					</div>
+					
+					<div id="quesD" name="quesD" class="quesD type-1">
+						<textarea type="text" class="form-control" name="ques" row='1' autofocus='True' placeholder="enter your question" style="font-size:20px;overflow-x: hidden; word-wrap: break-word ;height: 30px; width: 700px; margin-bottom:10px;">
+							
+						</textarea>
+					</div>
+
+					<div id="ansD" name="ansD" class="ansD type-1">
+						<textarea type="text"  class="form-control" name="ans" row='1' autofocus='True' placeholder="enter your answer" style="overflow-x: hidden; word-wrap: break-word; height: 200px; width: 700px;margin-bottom:10px;">
+							
+						</textarea>
+					</div>
+
+					<div class="inputs type-2" style="margin-bottom:10px;" id="fpname">
+						<!-- fpname = name of food or place. sorry couldn't find a name -->
+						Name of food/place/chapter: 
+						<input type="text" name="fpname" placeholder="name">
+
+					</div>
+
+					<div class="dropdown type-2" id="rating" style="margin-bottom:10px; font-size: .5em;">
+						Rating:
+						<select class="form-control" name="rating">
+							<option class="disabled">Choose out of 5</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+						</select>
+					</div>
+
+					<div id="optD" name="optD" class="optD type-2">
+						<textarea type="text"  class="form-control" name="ans" row='1' autofocus='True' placeholder="optional description" style="overflow-x: hidden; word-wrap: break-word; height: 200px; width: 700px;margin-bottom:10px;">
+							
+						</textarea>
+					</div>
+
+					<div id="sub" name="sub" class="sub">
+						<input class="btn btn-lg" type="submit" style="border-radius: 5px" />
+					</div>
+				</form>
+			</div>
+		</body>
+	</html>
+=======
 <head>
 	<title>Chatbot Q/A</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -42,3 +125,4 @@ Hello {{user}}<span><form action="/logout"><input type="submit" value="logout" n
 </div>
 </body>
 </html>
+>>>>>>> master
