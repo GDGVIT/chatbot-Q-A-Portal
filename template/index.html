@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
 	<head>
 		<title>Chatbot Q/A</title>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,16 +16,18 @@
 		</head>
 
 		<body>
+		<body>
+Hello {{user}}<span><form action="/logout"><input type="submit" value="logout" name="logout"></form></span>
 			<div id="header">
 			</div>
 			{{response}}
-			<div id="portal" class="portal">
-				<h2>Submit a question related to vit here...<h1>
+			<div id="portal" class="container">
+				<h2><bold>Submit a question related to vit here...</bold><h1>
 				
-				<form method="post" name="QA" action='/'>
+				<form method="post" name="QA" action='/node'>
 					
 					<div class="dropdown" style="margin-bottom: 10px;">						
-						<select class="form-control" id="ques_type"  name="ques_type" placeholder="Question type">
+						<select class="selectpicker" id="ques_type"  name="ques_type" placeholder="Question type" style="max-height: 30px; font-size: 20px;">
 							<option class="disabled">Select question type</option>
 							<option>Faculty</option>
 							<option>Admissions</option>
@@ -39,7 +40,7 @@
 					</div>
 					
 					<div id="quesD" name="quesD" class="quesD type-1">
-						<textarea type="text" class="form-control" name="ques" row='1' autofocus='True' placeholder="enter your question" style="font-size:20px;overflow-x: hidden; word-wrap: break-word ;height: 30px; width: 700px; margin-bottom:10px;">
+						<textarea type="text" class="form-control custom-control" name="ques" row='1' autofocus='True' placeholder="enter your question" style="font-size:20px;overflow-x: hidden; word-wrap: break-word ;height: 25px; width: 700px; margin-bottom:10px;">
 							
 						</textarea>
 					</div>
@@ -59,7 +60,7 @@
 
 					<div class="dropdown type-2" id="rating" style="margin-bottom:10px; font-size: .5em;">
 						Rating:
-						<select class="form-control" name="rating">
+						<select class="selectpicker" name="rating">
 							<option class="disabled">Choose out of 5</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -82,47 +83,5 @@
 			</div>
 		</body>
 	</html>
-=======
-<head>
-	<title>Chatbot Q/A</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
-  <link rel="shortcut icon" href="{{static_url('gdg1.jpg')}}"
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="{{static_url('style.css')}}" rel="stylesheet" type="text/css">
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-</head>
-<body>
-Hello {{user}}<span><form action="/logout"><input type="submit" value="logout" name="logout"></form></span>
-<div id="header">
-<p>
-{{response}}
-</p>
-<div id="portal" class="portal">
-<h2>Submit a question related to vit here...<h1>
-<form method="post" name="QA" action='/node'>
-	<div class="dropdown">
-			
-			<select class="form-control" id="ques_type"  name="ques_type" placeholder="Question type">
-			<option class="disabled">Select question type</option>
-			<option>Faculty</option>
-			<option>Admissions</option>
-			<option>Food</option>
-			<option>Chapters</option>
-			<option>FFCS</option>
-			<option>Places</option>
-			<option>General</option>
 
-			</select>
-	</div>
-    	
-	<div id="quesD" name="quesD" class="quesD"><textarea type="text" name="ques" row='1' autofocus='True' placeholder="enter your question" style="font-size:20px;overflow-x: hidden; word-wrap: break-word ;height: 30px; width: 700px"></textarea></div>
-	<div id="ansD" name="ansD" class="ansD"><textarea type="text"  class="form-control" name="ans" row='1' autofocus='True' placeholder="enter your answer" style="overflow-x: hidden; word-wrap: break-word; height: 200px; width: 700px;"></textarea></div>
-	<br>
-	<div id="sub" name="sub" class="sub"><input type="submit" style="border-radius: 5px" /></div>
-	</form>
-</div>
-</body>
 </html>
->>>>>>> master
