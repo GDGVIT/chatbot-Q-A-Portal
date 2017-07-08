@@ -11,7 +11,6 @@ import env
 
 db = MotorClient(env.DB_Link)['chatbot-learn']
 ques = db['ques']
-rating = db['rating']
 
 
 class IndexHandler(RequestHandler):
@@ -46,39 +45,27 @@ class MainHandler(RequestHandler):
     def post(self):
         user = self.get_cookie('user')
         ques_type = self.get_argument('ques_type').lower()
+        ques = self.get_argument("ques").rstrip('?').strip().lower()
+        ans = self.get_argument("ans").lower()
+        check_inside = yield db.ques.find_one({'question': ques})
+        if check_inside is not None:
+            self.write('such a question exist')
+        elif len(ques) < 2:
+            self.write('your answer or question is too short..please try again')
+        elif ques_type in ['places','food','chapters']:
+            rating = self.get_argument('rating')
+            yield db.ques.update({'question': ques},
+                                 {"$set": {'question': ques, 'answer': ans,
+                                           'rating':rating,
+                                           'type': ques_type, 'submitted by': user}}, upsert=True)
 
-        if ques_type not in ['food', 'places', 'chapters']:
-            ques = self.get_argument("ques").rstrip('?').strip().lower()
-            ans = self.get_argument("ans").lower()
-            check_inside = yield db.ques.find_one({'question': ques})
-            if check_inside is not None:
-                self.write('such a question exist')
-            elif len(ques) < 10:
-                self.write('your answer or question is too short..please try again')
-            else:
-                yield db.ques.update({'question': ques},
-                                     {"$set": {'question': ques, 'answer': ans,
-                                               'type': ques_type, 'submitted by': user}}, upsert=True)
-
-                self.redirect('/node?response=True')
-
+            self.redirect('/node?response=True')
         else:
-            name = self.get_argument("fpname").strip().lower()
-            score = self.get_argument("rating")
-            description = self.get_argument("ans")
-            check_inside = yield db.rating.find_one({'name': name})
-            if check_inside is not None:
-                self.write(name + ' has already been rated')
-            else:
-                yield db.rating.update({'name': name},
-                                       {"$set": {'name': name,
-                                                 'answer': description,
-                                                 'rating': score,
-                                                 'type': ques_type,
-                                                 'submitted by': user}},
-                                       upsert=True)
-                self.redirect('/node?response=True')
+            yield db.ques.update({'question': ques},
+                                 {"$set": {'question': ques, 'answer': ans,
+                                           'type': ques_type, 'submitted by': user}}, upsert=True)
 
+            self.redirect('/node?response=True')
 
 class LogoutHandler(RequestHandler):
     @coroutine
