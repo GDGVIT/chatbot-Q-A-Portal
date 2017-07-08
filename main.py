@@ -45,8 +45,13 @@ class MainHandler(RequestHandler):
     def post(self):
         user = self.get_cookie('user')
         ques_type = self.get_argument('ques_type').lower()
-        ques = self.get_argument("ques").rstrip('?').strip().lower()
-        ans = self.get_argument("ans").lower()
+        ques_n = "ques"
+        ans_n = "ans"
+        if ques_type in ['places','chapters','food']:
+            ques_n = "ques1"
+            ans_n = "ans1"
+        ques = self.get_argument(ques_n).rstrip('?').strip().lower()
+        ans = self.get_argument(ans_n).lower()
         check_inside = yield db.ques.find_one({'question': ques})
         if check_inside is not None:
             self.write('such a question exist')
