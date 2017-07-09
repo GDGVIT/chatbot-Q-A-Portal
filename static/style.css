@@ -16,10 +16,20 @@ body{
 	padding:10px;
 }
 
-#portal{
+/*#portal{
 	margin:  100px auto 500px auto;
 	padding: 10px;
 	width: 800px;
+	box-sizing: relative;
+    background-color: rgba(128,128,128,0.5);
+    border-radius: 10px;
+
+}*/
+
+#portal{
+	margin:  5% 20%;
+	padding: 10px;
+	width: 60%;
 	box-sizing: relative;
     background-color: rgba(128,128,128,0.5);
     border-radius: 10px;
