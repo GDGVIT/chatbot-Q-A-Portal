@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>contributors</title>
+</head>
+<body>
+	{% for i in contributors_list %}
+		<p>{{i['_id']}}-{{i['count']}}<p>
+	{% end %}
+
+</body>
+</html>
