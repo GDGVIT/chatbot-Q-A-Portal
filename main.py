@@ -7,9 +7,8 @@ from tornado.gen import coroutine, sleep
 # other libraries
 from motor import MotorClient
 import os
-import env
 
-db = MotorClient(env.DB_Link)['chatbot-learn']
+db = MotorClient(os.environ['DB_Link'])['chatbot-learn']
 ques = db['ques']
 
 
@@ -33,7 +32,7 @@ class MainHandler(RequestHandler):
     @coroutine
     def get(self):
         user = self.get_cookie('user')
-        # pre_ques = db.ques.find_one()
+        # pre_ques =yield db.ques.find().to_list(None)
         try:
             old_response = self.get_query_argument('response')
             response = "your answer was submitted successfully, try another"

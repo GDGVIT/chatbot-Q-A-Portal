@@ -1,5 +1,7 @@
 // Food, Places, Chapters
 
+pre_ques = "";
+
 function d(smthg) {
 	console.log(smthg)
 }
@@ -37,7 +39,11 @@ $(document).ready(function() {
     		$(".type-2").hide();
             break;
     }
+    // $('#previous_ques').text();
+
 	});
 });
+
+
 
 

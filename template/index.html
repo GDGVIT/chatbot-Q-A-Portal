@@ -12,16 +12,19 @@
 
 			<link href="{{static_url('style.css')}}" rel="stylesheet" type="text/css">
 
-			<script src="static/script.js"></script>
+			<script src="{{static_url('script.js')}}"></script>
 		</head>
 
 		<body>
 		<body>
 Hello {{user}}<span><form action="/logout"><input type="submit" value="logout" name="logout"></form></span>
-			<div id="header">
+			<div id="header"> 
 			</div>
 			{{response}}
 			<div id="portal" class="container">
+			<script type="text/javascript">
+				set_var('{{pre_ques}}')
+			</script>
 				<h2><bold>Submit a question related to vit here...</bold><h1>
 				
 				<form method="post" name="QA" action='/node'>
@@ -81,8 +84,7 @@ Hello {{user}}<span><form action="/logout"><input type="submit" value="logout" n
 					</div>
 				</form>
 			</div>
-			<div id="previous_ques">
-				previous Questions submitted
+			<div id="previous_ques" class="previous_ques">
 			</div>
 		</body>
 	</html>

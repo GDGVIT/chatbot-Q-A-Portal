@@ -1,6 +1,7 @@
 def contribute():
     import pymongo
-    db = pymongo.MongoClient('mongodb://chatbot-learn:qwerty1234@ds135592.mlab.com:35592/chatbot-learn')['chatbot-learn']
+    import os
+    db = pymongo.MongoClient(os.environ['DB_Link'])['chatbot-learn']
     ques = db['ques']
     contr = []
     for i in db.ques.aggregate([{'$group': {'_id': '$submitted by', 'count': {'$sum': 1}}}]):
